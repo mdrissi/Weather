@@ -29,6 +29,8 @@ class WeatherCast(private val units: String, private val appID: String) {
                     t: Throwable
                 ) {
                     t.printStackTrace()
+                    onDataRetrievedListener.conexionFail()
+
                 }
             })
     }

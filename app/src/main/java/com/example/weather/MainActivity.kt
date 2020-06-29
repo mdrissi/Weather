@@ -32,8 +32,6 @@ class MainActivity : AppCompatActivity() {
 
         sharedPreferences = applicationContext.getSharedPreferences("Cities", Context.MODE_PRIVATE)
         val json = sharedPreferences.getString("cities", "")
-        println("khalil")
-        println(json)
         if (json != null) {
             if (json.isNotEmpty()) {
                 val type:Type = object : TypeToken<List<String>>() {}.type
@@ -85,8 +83,6 @@ class MainActivity : AppCompatActivity() {
         val json = Gson().toJson(townList)
         val editor:SharedPreferences.Editor = sharedPreferences.edit()
         editor.putString("cities", json)
-        println("khalil end")
-        println(json.toString())
         editor.apply()
     }
 
@@ -95,8 +91,6 @@ class MainActivity : AppCompatActivity() {
         val json = Gson().toJson(townList)
         val editor:SharedPreferences.Editor = sharedPreferences.edit()
         editor.putString("cities", json)
-        println("khalil end")
-        println(json.toString())
         editor.apply()
 
     }

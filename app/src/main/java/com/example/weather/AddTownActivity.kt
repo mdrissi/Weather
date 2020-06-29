@@ -34,6 +34,11 @@ class AddTownActivity : AppCompatActivity() {
                 override fun onFailure() {
                     Toast.makeText(this@AddTownActivity, "City not found", Toast.LENGTH_SHORT).show()
                 }
+
+                override fun conexionFail() {
+                    Toast.makeText(this@AddTownActivity, "Connection Fail", Toast.LENGTH_SHORT).show()
+                    finish()
+                }
             })
         }
     }

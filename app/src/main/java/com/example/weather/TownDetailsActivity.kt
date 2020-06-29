@@ -2,6 +2,7 @@ package com.example.weather
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -42,13 +43,22 @@ class TownDetailsActivity : AppCompatActivity() {
                 pressure.text = cast.getMain()?.getPressure().toString()
                 humidity.text = cast.getMain()?.getHumidity().toString()
 
-                val ic: String? = "R.drawable._" + cast.getWeather()?.get(0)?.getIcon()
+                val ic: String? = "_" + cast.getWeather()?.get(0)?.getIcon()
 
-//                icon.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable._01d))
+
+                val idFiled = resources.getIdentifier(ic,"drawable", packageName)
+                if (idFiled != null) {
+                    icon.setImageDrawable(ContextCompat.getDrawable(applicationContext, idFiled))
+                }
             }
 
             override fun onFailure() {
                 Toast.makeText(this@TownDetailsActivity, "City not found", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun conexionFail() {
+                Toast.makeText(this@TownDetailsActivity, "Connection Fail", Toast.LENGTH_SHORT).show()
+                finish()
             }
         })
     }
