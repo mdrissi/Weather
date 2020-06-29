@@ -1,5 +1,7 @@
 package com.example.weather
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -22,7 +24,10 @@ class AddTownActivity : AppCompatActivity() {
         save.setOnClickListener {
             weatherCast.getWeather(townName.text.toString(), object: OnDataRetrievedListener {
                 override fun onSuccess(cast: Cast) {
-                    Toast.makeText(this@AddTownActivity, "City added successfully", Toast.LENGTH_SHORT).show()
+                    val intent = Intent()
+                    intent.putExtra("town", cast.getName())
+
+                    setResult(Activity.RESULT_OK, intent)
                     finish()
                 }
 

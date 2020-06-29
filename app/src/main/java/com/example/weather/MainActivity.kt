@@ -1,26 +1,65 @@
 package com.example.weather
 
+import android.app.Activity
 import android.content.Intent
+import android.graphics.Rect
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weathercast.WeatherCast
 
 class MainActivity : AppCompatActivity() {
+    private val requestCode = 42
+    var townList = ArrayList<String>()
+    private lateinit var adapter:TownListAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val addTown:Button = findViewById(R.id.bt_addTown);
-        val townList:RecyclerView = findViewById(R.id.rv_townList);
+        val rv_townList:RecyclerView = findViewById(R.id.rv_townList);
 
         addTown.setOnClickListener{
-            startActivity(Intent(this@MainActivity, AddTownActivity::class.java))
+            startActivityForResult(Intent(this@MainActivity, AddTownActivity::class.java), requestCode)
         }
 
+        val rvManager = LinearLayoutManager(this)
+        rv_townList.layoutManager = rvManager
+        rv_townList.addItemDecoration(object : RecyclerView.ItemDecoration() {
+            override fun getItemOffsets(
+                outRect: Rect,
+                view: View,
+                parent: RecyclerView,
+                state: RecyclerView.State
+            ) {
+                super.getItemOffsets(outRect, view, parent, state)
+                outRect.bottom = resources.getDimension(R.dimen.margin_btn).toInt()
+            }
+        })
 
+        adapter = TownListAdapter(townList)
 
+        rv_townList.adapter = adapter
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && requestCode == this.requestCode) {
+            if (data != null) {
+                val town: String = data.getStringExtra("town")
+                if (townList.contains(town))
+                    return
+
+                Toast.makeText(this@MainActivity, "City added successfully", Toast.LENGTH_SHORT).show()
+                townList.add(town)
+                adapter.notifyDataSetChanged()
+            }
+        }
     }
 }
