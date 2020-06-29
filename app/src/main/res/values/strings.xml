@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="app_id">72a8c2bb84f43f36484d01e4fad0d8d9</string>
+    <string name="add_town">Add Town</string>
+    <string name="add_town_hint">ex: Paris</string>
+    <string name="save">Save</string>
+</resources>

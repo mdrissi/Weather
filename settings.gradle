@@ -1,0 +1,3 @@
+include ':WeatherCast'
+include ':app'
+rootProject.name = "Weather"
