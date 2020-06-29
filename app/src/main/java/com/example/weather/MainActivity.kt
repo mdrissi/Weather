@@ -1,27 +1,45 @@
 package com.example.weather
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Rect
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.weathercast.WeatherCast
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.lang.reflect.Type
 
 class MainActivity : AppCompatActivity() {
     private val requestCode = 42
     var townList = ArrayList<String>()
     private lateinit var adapter:TownListAdapter
+    private lateinit var sharedPreferences:SharedPreferences
 
+    /**
+     *
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        sharedPreferences = applicationContext.getSharedPreferences("Cities", Context.MODE_PRIVATE)
+        val json = sharedPreferences.getString("cities", "")
+        println("khalil")
+        println(json)
+        if (json != null) {
+            if (json.isNotEmpty()) {
+                val type:Type = object : TypeToken<List<String>>() {}.type
+                townList = Gson().fromJson(json, type)
+            }
+        }
         val addTown:Button = findViewById(R.id.bt_addTown);
         val rv_townList:RecyclerView = findViewById(R.id.rv_townList);
 
@@ -44,7 +62,6 @@ class MainActivity : AppCompatActivity() {
         })
 
         adapter = TownListAdapter(townList)
-
         rv_townList.adapter = adapter
     }
 
@@ -61,5 +78,26 @@ class MainActivity : AppCompatActivity() {
                 adapter.notifyDataSetChanged()
             }
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        val json = Gson().toJson(townList)
+        val editor:SharedPreferences.Editor = sharedPreferences.edit()
+        editor.putString("cities", json)
+        println("khalil end")
+        println(json.toString())
+        editor.apply()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val json = Gson().toJson(townList)
+        val editor:SharedPreferences.Editor = sharedPreferences.edit()
+        editor.putString("cities", json)
+        println("khalil end")
+        println(json.toString())
+        editor.apply()
+
     }
 }

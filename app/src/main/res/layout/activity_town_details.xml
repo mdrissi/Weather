@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TownDetailsActivity">
+
+    <TextView
+        android:id="@+id/tv_cityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_temp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/margin_btn"
+        android:textColor="@android:color/black"
+        android:textSize="@android:dimen/app_icon_size"
+        tools:text="Berlin"/>
+
+    <TextView
+        android:id="@+id/tv_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_cityName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_cityName"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="@android:dimen/app_icon_size"
+        tools:text="18°c"/>
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_cityName"
+        android:textColor="@android:color/black"
+        tools:text="Scattered Clouds"/>
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_description"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/tv_feels_Txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_icon"
+        android:layout_margin="@dimen/margin_btn"
+        android:textColor="@android:color/black"
+        android:text="@string/feels_like"/>
+
+    <TextView
+        android:id="@+id/tv_temp_min_Txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_feels_Txt"
+        android:layout_margin="@dimen/margin_btn"
+        android:textColor="@android:color/black"
+        android:text="@string/temp_min"/>
+
+    <TextView
+        android:id="@+id/tv_temp_max_Txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_temp_min_Txt"
+        android:layout_margin="@dimen/margin_btn"
+        android:textColor="@android:color/black"
+        android:text="@string/temp_max"/>
+
+    <TextView
+        android:id="@+id/tv_pressure_Txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_temp_max_Txt"
+        android:layout_margin="@dimen/margin_btn"
+        android:textColor="@android:color/black"
+        android:text="@string/pressure"/>
+
+    <TextView
+        android:id="@+id/tv_humidity_Txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_pressure_Txt"
+        android:layout_margin="@dimen/margin_btn"
+        android:textColor="@android:color/black"
+        android:text="@string/humidity"/>
+
+    <TextView
+        android:id="@+id/tv_feels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_feels_Txt"
+        app:layout_constraintTop_toTopOf="@id/tv_feels_Txt"
+        android:layout_marginStart="@dimen/margin_btn"
+        android:textColor="@android:color/black"
+        tools:text="@string/feels_like"/>
+
+    <TextView
+        android:id="@+id/tv_temp_min"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_temp_min_Txt"
+        app:layout_constraintTop_toTopOf="@id/tv_temp_min_Txt"
+        android:layout_marginStart="@dimen/margin_btn"
+        android:textColor="@android:color/black"
+        tools:text="@string/temp_min"/>
+
+    <TextView
+        android:id="@+id/tv_temp_max"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_temp_max_Txt"
+        app:layout_constraintTop_toTopOf="@id/tv_temp_max_Txt"
+        android:layout_marginStart="@dimen/margin_btn"
+        android:textColor="@android:color/black"
+        tools:text="@string/temp_max"/>
+
+    <TextView
+        android:id="@+id/tv_pressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_pressure_Txt"
+        app:layout_constraintTop_toTopOf="@id/tv_pressure_Txt"
+        android:layout_marginStart="@dimen/margin_btn"
+        android:textColor="@android:color/black"
+        tools:text="@string/pressure"/>
+
+    <TextView
+        android:id="@+id/tv_humidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_humidity_Txt"
+        app:layout_constraintTop_toTopOf="@id/tv_humidity_Txt"
+        android:layout_marginStart="@dimen/margin_btn"
+        android:textColor="@android:color/black"
+        tools:text="@string/humidity"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

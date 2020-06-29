@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddTownActivity"></activity>
+        <activity android:name=".TownDetailsActivity"></activity>
+        <activity android:name=".AddTownActivity" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
