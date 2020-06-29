@@ -1,7 +1,11 @@
 package com.example.weather
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
+import androidx.recyclerview.widget.RecyclerView
 import com.example.weathercast.WeatherCast
 
 class MainActivity : AppCompatActivity() {
@@ -9,8 +13,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val weatherCast:WeatherCast = WeatherCast("metric", getString(R.string.app_id));
+        val addTown:Button = findViewById(R.id.bt_addTown);
+        val townList:RecyclerView = findViewById(R.id.rv_townList);
 
-        weatherCast.getWeather("Berlin");
+        addTown.setOnClickListener{
+            startActivity(Intent(this@MainActivity, AddTownActivity::class.java))
+        }
+
+
+
     }
 }

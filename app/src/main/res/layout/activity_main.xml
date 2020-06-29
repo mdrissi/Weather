@@ -8,15 +8,15 @@
     tools:context=".MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/townList"
+        android:id="@+id/rv_townList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/addTown"
+        app:layout_constraintBottom_toTopOf="@id/bt_addTown"
         android:layout_marginBottom="@dimen/margin_btn"/>
 
     <Button
-        android:id="@+id/addTown"
+        android:id="@+id/bt_addTown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"

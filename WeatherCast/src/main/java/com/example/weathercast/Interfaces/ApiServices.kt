@@ -1,4 +1,4 @@
-package com.example.weathercast
+package com.example.weathercast.Interfaces
 
 import com.example.weathercast.Models.Cast
 import retrofit2.Call

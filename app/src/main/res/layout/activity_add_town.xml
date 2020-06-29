@@ -8,6 +8,7 @@
     tools:context=".AddTownActivity">
 
     <EditText
+        android:id="@+id/et_townName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,7 +19,7 @@
         android:hint="@string/add_town_hint"/>
 
     <Button
-        android:id="@+id/save"
+        android:id="@+id/bt_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"

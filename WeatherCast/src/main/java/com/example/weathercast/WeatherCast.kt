@@ -1,5 +1,6 @@
 package com.example.weathercast
 
+import com.example.weathercast.Interfaces.OnDataRetrievedListener
 import com.example.weathercast.Models.Cast
 import retrofit2.Call
 import retrofit2.Callback
@@ -8,7 +9,7 @@ import retrofit2.Response
 class WeatherCast(private val units: String, private val appID: String) {
     private val appRetrofit:AppRetrofit = AppRetrofit()
 
-    fun getWeather(town:String) {
+    fun getWeather(town:String, onDataRetrievedListener:OnDataRetrievedListener) {
         appRetrofit
             .getService()
             ?.getWeather(town, units, appID)
@@ -17,7 +18,10 @@ class WeatherCast(private val units: String, private val appID: String) {
                     call: Call<Cast?>,
                     response: Response<Cast?>
                 ) {
-                    println(response.code());
+                    if (response.isSuccessful)
+                        response.body()?.let { onDataRetrievedListener.onSuccess(it) }
+                    else
+                        onDataRetrievedListener.onFailure()
                 }
 
                 override fun onFailure(
