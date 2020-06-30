@@ -16,5 +16,6 @@ class TownViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             intent.putExtra("town", city)
             itemView.context.startActivity(intent)
         }
+
     }
 }

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
+
 /**
  * The adapter for the townlist
  *
@@ -32,5 +33,10 @@ class TownListAdapter(townList: ArrayList<String>) : RecyclerView.Adapter<Recycl
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as TownViewHolder).bind(data[position])
+        holder.itemView.setOnLongClickListener{
+            data.remove(data[position])
+            notifyDataSetChanged()
+            true // <- set to true
+        }
     }
 }
