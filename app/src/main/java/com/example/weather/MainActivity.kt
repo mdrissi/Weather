@@ -17,6 +17,10 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
 
+/**
+ * print the townlist and check if the town to be added is not already inside
+ *
+ */
 class MainActivity : AppCompatActivity() {
     private val requestCode = 42
     var townList = ArrayList<String>()
@@ -24,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var sharedPreferences:SharedPreferences
 
     /**
-     *
+     * initialize the activity
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                 state: RecyclerView.State
             ) {
                 super.getItemOffsets(outRect, view, parent, state)
-                outRect.bottom = resources.getDimension(R.dimen.margin_btn).toInt()
+                outRect.bottom = resources.getDimension(R.dimen.margin_tv).toInt()
             }
         })
 
@@ -78,6 +82,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * store townList into SharedPreferences
+     *
+     */
     override fun onPause() {
         super.onPause()
         val json = Gson().toJson(townList)
@@ -86,6 +94,10 @@ class MainActivity : AppCompatActivity() {
         editor.apply()
     }
 
+    /**
+     * store townList into SharedPreferences
+     *
+     */
     override fun onDestroy() {
         super.onDestroy()
         val json = Gson().toJson(townList)

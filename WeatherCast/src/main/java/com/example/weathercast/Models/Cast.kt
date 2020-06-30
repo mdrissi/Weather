@@ -32,6 +32,11 @@ class Cast {
     @Expose
     private var cod: Int? = null
 
+    /**
+     * Get weather scope
+     *
+     * @return List
+     */
     fun getWeather(): List<Weather?>? {
         return weather
     }
@@ -40,6 +45,11 @@ class Cast {
         this.weather = weather as List<Weather>?
     }
 
+    /**
+     * Get the main
+     *
+     * @return
+     */
     fun getMain(): Main? {
         return main
     }
@@ -72,18 +82,38 @@ class Cast {
         this.timezone = timezone
     }
 
+    /**
+     * get city name
+     *
+     * @return string
+     */
     fun getName(): String? {
         return name
     }
 
+    /**
+     * set city Name
+     *
+     * @param name
+     */
     fun setName(name: String?) {
         this.name = name
     }
 
+    /**
+     * get Cod
+     *
+     * @return int
+     */
     fun getCod(): Int? {
         return cod
     }
 
+    /**
+     * setter for Cod
+     *
+     * @param cod
+     */
     fun setCod(cod: Int?) {
         this.cod = cod
     }

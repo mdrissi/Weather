@@ -2,4 +2,5 @@
 <resources>
     <dimen name="margin_btn">16dp</dimen>
     <dimen name="margin_tv">8dp</dimen>
+    <dimen name="margin_item">3dp</dimen>
 </resources>

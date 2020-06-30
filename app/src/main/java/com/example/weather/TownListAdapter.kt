@@ -4,6 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
+/**
+ * The adapter for the townlist
+ *
+ * @constructor
+ * TODO
+ *
+ * @param townList
+ */
 class TownListAdapter(townList: ArrayList<String>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var data = ArrayList<String>()
 

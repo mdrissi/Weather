@@ -36,6 +36,11 @@ class Weather {
         this.main = main
     }
 
+    /**
+     * Get the General descreption of the weather foggy rainy,,,
+     *
+     * @return
+     */
     fun getDescription(): String? {
         return description
     }
@@ -44,6 +49,11 @@ class Weather {
         this.description = description
     }
 
+    /**
+     * get the icon depending on climate
+     *
+     * @return
+     */
     fun getIcon(): String? {
         return icon
     }

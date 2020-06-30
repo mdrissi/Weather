@@ -4,38 +4,72 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 class Main {
+    /**
+     * temperature
+     */
+
     @SerializedName("temp")
     @Expose
     private var temp: Double? = null
 
+    /**
+     * real feel
+     */
     @SerializedName("feels_like")
     @Expose
     private var feelsLike: Double? = null
 
+    /**
+     * Minimum temperature same city during day
+     */
     @SerializedName("temp_min")
     @Expose
     private var tempMin: Double? = null
 
+    /**
+     * Maximum temperature same city during day
+     */
     @SerializedName("temp_max")
     @Expose
     private var tempMax: Double? = null
 
+    /**
+     * the Pressure
+     */
     @SerializedName("pressure")
     @Expose
     private var pressure: Double? = null
 
+    /**
+     * humidity
+     */
     @SerializedName("humidity")
     @Expose
     private var humidity: Double? = null
 
+    /**
+     * Tgetter for temperature
+     *
+     * @return double
+     */
     fun getTemp(): Double? {
         return temp
     }
 
+    /**
+     * setter
+     *
+     * @param temp
+     */
     fun setTemp(temp: Double?) {
         this.temp = temp
     }
 
+    /**
+     * How feels like
+     *
+     * @return double
+     */
     fun getFeelsLike(): Double? {
         return feelsLike
     }
@@ -44,6 +78,11 @@ class Main {
         this.feelsLike = feelsLike
     }
 
+    /**
+     * get the minimum temperature
+     *
+     * @return
+     */
     fun getTempMin(): Double? {
         return tempMin
     }
@@ -52,6 +91,11 @@ class Main {
         this.tempMin = tempMin
     }
 
+    /**
+     * Get  the max temperature
+     *
+     * @return
+     */
     fun getTempMax(): Double? {
         return tempMax
     }
@@ -60,6 +104,11 @@ class Main {
         this.tempMax = tempMax
     }
 
+    /**
+     * get the pressure
+     *
+     * @return
+     */
     fun getPressure(): Double? {
         return pressure
     }
@@ -68,6 +117,11 @@ class Main {
         this.pressure = pressure
     }
 
+    /**
+     * get the Humidity
+     *
+     * @return
+     */
     fun getHumidity(): Double? {
         return humidity
     }

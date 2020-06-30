@@ -5,10 +5,28 @@ import com.example.weathercast.Models.Cast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.File
 
-class WeatherCast(private val units: String, private val appID: String) {
-    private val appRetrofit:AppRetrofit = AppRetrofit()
+/**
+ * TODO
+ *
+ * @property units
+ * @property appID
+ * @constructor
+ * instantiate appretrofit
+ *
+ * @param cacheDir
+ * @param isConnected
+ */
+class WeatherCast(private val units: String, private val appID: String, cacheDir: File, isConnected: Boolean) {
+    private val appRetrofit:AppRetrofit = AppRetrofit(cacheDir , isConnected)
 
+    /**
+     * get The Weather
+     *
+     * @param town
+     * @param onDataRetrievedListener
+     */
     fun getWeather(town:String, onDataRetrievedListener:OnDataRetrievedListener) {
         appRetrofit
             .getService()
@@ -29,7 +47,7 @@ class WeatherCast(private val units: String, private val appID: String) {
                     t: Throwable
                 ) {
                     t.printStackTrace()
-                    onDataRetrievedListener.conexionFail()
+                    onDataRetrievedListener.connectionFail()
 
                 }
             })

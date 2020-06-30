@@ -12,8 +12,13 @@ import androidx.core.content.ContextCompat
 import com.example.weathercast.Interfaces.OnDataRetrievedListener
 import com.example.weathercast.Models.Cast
 import com.example.weathercast.WeatherCast
-import com.google.gson.Gson
 
+/**
+ * Activity to show detail of the weather cast for a town
+ * populate townd detail
+ * handle the use offline
+ * if not cached and no response finish() and back to mainactivity
+ */
 class TownDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +35,7 @@ class TownDetailsActivity : AppCompatActivity() {
         val humidity: TextView = findViewById(R.id.tv_humidity)
 
         val town = intent.getStringExtra("town")
-        val weatherCast = WeatherCast("metric", getString(R.string.app_id));
+        val weatherCast = WeatherCast("metric", getString(R.string.app_id), cacheDir, Utils().isConnected(this));
 
         weatherCast.getWeather(town, object: OnDataRetrievedListener {
             override fun onSuccess(cast: Cast) {
@@ -47,7 +52,7 @@ class TownDetailsActivity : AppCompatActivity() {
 
 
                 val idFiled = resources.getIdentifier(ic,"drawable", packageName)
-                if (idFiled != null) {
+                if (idFiled != 0) {
                     icon.setImageDrawable(ContextCompat.getDrawable(applicationContext, idFiled))
                 }
             }
@@ -56,7 +61,7 @@ class TownDetailsActivity : AppCompatActivity() {
                 Toast.makeText(this@TownDetailsActivity, "City not found", Toast.LENGTH_SHORT).show()
             }
 
-            override fun conexionFail() {
+            override fun connectionFail() {
                 Toast.makeText(this@TownDetailsActivity, "Connection Fail", Toast.LENGTH_SHORT).show()
                 finish()
             }
