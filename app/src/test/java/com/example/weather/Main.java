@@ -3,9 +3,7 @@ package com.example.weather;
 import android.content.Context;
 import android.content.Intent;
 
-import androidx.test.espresso.action.AdapterViewProtocol;
 
-import com.example.weathercast.AppRetrofit;
 
 import org.junit.Assert;
 import org.junit.Test;

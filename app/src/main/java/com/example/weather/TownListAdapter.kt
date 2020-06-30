@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
  * The adapter for the townlist
  *
  * @constructor
- * TODO
+ *
  *
  * @param townList
  */
